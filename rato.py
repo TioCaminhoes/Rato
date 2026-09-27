@@ -6,7 +6,7 @@ class labirintorato:
     def __init__(self, labirinto):
         self.labirinto = labirinto
         self.pilha = []
-        self.visitados = set()
+        self.visitados = []
         self.caminho = []
         
         self.root = tk.Tk()
@@ -21,7 +21,7 @@ class labirintorato:
 
     def encontrar_caminho(self, inicio, fim):
         self.pilha.append(inicio)
-        self.visitados.add(inicio)
+        self.visitados.append(inicio)
 
         while self.pilha:
             posicao_atual = self.pilha.pop()
@@ -38,7 +38,7 @@ class labirintorato:
             for vizinho in self.obter_vizinhos(posicao_atual):
                 if vizinho not in self.visitados and self.labirinto[vizinho[0]][vizinho[1]] != 1:
                     self.pilha.append(vizinho)
-                    self.visitados.add(vizinho)
+                    self.visitados.append(vizinho)
 
         self.root.mainloop()
         return None

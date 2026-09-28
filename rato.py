@@ -28,7 +28,6 @@ class labirintorato:
                     self.pilha.append(vizinho)
                     self.visitados.append(vizinho)
 
-        self.root.mainloop()
         return None
 
     def obter_vizinhos(self, posicao):
@@ -61,13 +60,8 @@ class labirintorato:
             print(posicao)
 
 
-labirinto = [
-    [0, 1, 0, 0, 0],
-    [0, 1, 0, 1, 0],
-    [0, 0, 0, 1, 0],
-    [1, 1, 0, 0, 0],
-    [0, 0, 0, 1, 0]
-]
+with open('labirinto.txt', 'r') as arquivo:
+    labirinto = [[int(numero) for numero in linha.split()] for linha in arquivo]
 
 inicio = (0, 0)
 fim = (4, 4)

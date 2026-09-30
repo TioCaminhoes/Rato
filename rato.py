@@ -8,7 +8,7 @@ class labirintorato:
         self.pilha = []
         self.visitados = []
         self.caminho = []
-
+        
         self.root = tk.Tk()
         self.root.title("Rato no Labirinto")
         self.tamanho_celula = 60
@@ -28,11 +28,9 @@ class labirintorato:
             self.caminho.append(posicao_atual)
 
             self.desenhar_labirinto_terminal(posicao_atual)
-            self.desenhar_interface_grafica(posicao_atual)
             time.sleep(0.4)
 
             if posicao_atual == fim:
-                self.root.mainloop()
                 return self.caminho
 
             for vizinho in self.obter_vizinhos(posicao_atual):
@@ -40,7 +38,6 @@ class labirintorato:
                     self.pilha.append(vizinho)
                     self.visitados.append(vizinho)
 
-        self.root.mainloop()
         return None
 
     def obter_vizinhos(self, posicao):
@@ -75,14 +72,14 @@ class labirintorato:
                 y1 = i * self.tamanho_celula
                 x2 = x1 + self.tamanho_celula
                 y2 = y1 + self.tamanho_celula
-
+                
                 if self.labirinto[i][j] == 1:
                     cor = "#2C3E50"
                 else:
                     cor = "#ECF0F1"
-
+                    
                 self.canvas.create_rectangle(x1, y1, x2, y2, fill=cor, outline="#BDC3C7")
-
+        
         rx1 = posicao_do_rato[1] * self.tamanho_celula + 15
         ry1 = posicao_do_rato[0] * self.tamanho_celula + 15
         rx2 = rx1 + self.tamanho_celula - 30

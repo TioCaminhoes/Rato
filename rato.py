@@ -64,6 +64,8 @@ class labirintorato:
                 else:
                     linha_visual += " 0 "
             print(linha_visual)
+
+        self.desenhar_interface_grafica(posicao_do_rato)
     def desenhar_interface_grafica(self, posicao_do_rato):
         self.canvas.delete("all")
         for i in range(len(self.labirinto)):
@@ -95,7 +97,7 @@ class labirintorato:
 with open('labirinto.txt', 'r') as arquivo:
     labirinto = [[int(numero) for numero in linha.split()] for linha in arquivo]
 
-inicio = (1, 3)
+inicio = (0, 0)
 fim = (4, 4)
 
 labirinto_solver = labirintorato(labirinto)

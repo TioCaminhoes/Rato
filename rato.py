@@ -2,13 +2,13 @@ import time
 import tkinter as tk
 
 class labirintorato:
-    
+
     def __init__(self, labirinto):
         self.labirinto = labirinto
         self.pilha = []
         self.visitados = []
         self.caminho = []
-        
+
         self.root = tk.Tk()
         self.root.title("Rato no Labirinto")
         self.tamanho_celula = 60
@@ -75,14 +75,14 @@ class labirintorato:
                 y1 = i * self.tamanho_celula
                 x2 = x1 + self.tamanho_celula
                 y2 = y1 + self.tamanho_celula
-                
+
                 if self.labirinto[i][j] == 1:
                     cor = "#2C3E50"
                 else:
                     cor = "#ECF0F1"
-                    
+
                 self.canvas.create_rectangle(x1, y1, x2, y2, fill=cor, outline="#BDC3C7")
-        
+
         rx1 = posicao_do_rato[1] * self.tamanho_celula + 15
         ry1 = posicao_do_rato[0] * self.tamanho_celula + 15
         rx2 = rx1 + self.tamanho_celula - 30
@@ -95,15 +95,10 @@ class labirintorato:
             print(posicao)
 
 
-labirinto = [
-    [0, 1, 0, 0, 0],
-    [0, 1, 0, 1, 0],
-    [0, 0, 0, 1, 0],
-    [1, 1, 0, 0, 0],
-    [0, 0, 0, 1, 0]
-]
+with open('labirinto.txt', 'r') as arquivo:
+    labirinto = [[int(numero) for numero in linha.split()] for linha in arquivo]
 
-inicio = (0, 0)
+inicio = (1, 3)
 fim = (4, 4)
 
 labirinto_solver = labirintorato(labirinto)
